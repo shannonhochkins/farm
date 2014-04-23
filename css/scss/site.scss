@@ -1,0 +1,137 @@
+@import '../shared/framework';
+
+.inner {
+	@include container();     
+	.form-control {height:28px; width:150px;}
+	#jobsNavigation, #nodesNavigation, #nodeGroupsNavigation { margin-top:15px; margin-bottom:15px;
+		button, input, p, select {float: left; margin:0 5px;}
+		input#jobSearch {width:130px;}
+		input#refreshRate {width:50px;}
+		select#filterBy {width:100px;}
+		p {line-height:30px;}
+
+	}
+	td.Ready, td.rendering {color:green;}
+	td.Dead, td.failed {color:red;}
+	td.starting, td.waiting {color:orange;} 
+}
+
+/* tables */
+table.tablesorter {
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+}
+table.tablesorter thead tr .header {
+	background-image: url('../../images/bg.gif');
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+}
+table.tablesorter tbody tr.odd td {
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url('../../images/asc.gif');
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url('../../images/desc.gif');
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {background-color: grey;color:#111;}
+
+.ui-dialog.ui-widget.ui-widget-content {@include border-radius(0); background:#272b30;
+	.ui-dialog-titlebar.ui-widget-header, .ui-dialog-buttonpane {background:darken(#272b30, 2%);@include border-radius(0);} 
+}
+
+#jobTable {
+
+/* Styling an indeterminate progress bar */
+	.progress {position:relative;display:block;margin-bottom:0; background:transparent;}
+	tr {position:relative;
+		&.completed, &.starting, &.rendering { color:green;
+			td:last-child {position:relative;
+				&:after {content: attr(data-total-time); color:white; background: green; padding:7px; position:absolute; left:101%; top:1px; white-space: nowrap;}
+				&:before {  content: ''; @include rotate(90); position: absolute;top: 50%;right: 0;margin-right: -8px; margin-top:-4px;  width: 0; height: 0;border-top: 8px solid green;border-right: 8px solid transparent;border-left: 8px solid transparent;}
+			}
+		}
+
+		&.rendering {color:orange;
+			td:last-child {
+				&:after {background:orange; color:black;}
+				&:before {border-top-color:orange;}
+			}
+		}
+		&.starting, &.dead {color:red;
+			td:last-child {
+				&:after {background:red; color:white;}
+				&:before {border-top-color:red;}
+			}
+		}		
+	}
+}
+progress:not(value) {
+	/* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
+
+}
+.progressText {display:block; @include border-radius(0);position:absolute; top:0px; left:0px; bottom:0px; right:0px; z-index:10; background:transparent; color:black;width:100%;text-align:center; }
+
+/* Styling the determinate progress element */
+
+progress[value] {appearance: none;border: none;width: 100%; height: 20px;background-color: whiteSmoke;@include border-radius(3px);@include box-shadow(0 2px 3px rgba(0,0,0,.5) inset);color: royalblue;position: relative;margin: 0; }
+
+/*
+Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+-webkit-progress-bar -> To style the progress element container
+-webkit-progress-value -> To style the progress element value.
+*/
+
+progress[value]::-webkit-progress-bar {background-color: whiteSmoke;@include border-radius(3px);@include box-shadow(0 2px 3px rgba(0,0,0,.5) inset);}
+progress[value]::-webkit-progress-value {position: relative;	background-size: 35px 20px, 100% 100%, 100% 100%;@include border-radius(3px); @include animation(animate-stripes 5s linear infinite);}
+@include keyframes(animate-stripes){
+	100% { background-position: -100px 0; }	
+}
+/* Let's spice up things little bit by using pseudo elements. */
+progress[value]::-webkit-progress-value:after {content: '';position: absolute;width:5px; height:5px;top:7px; right:7px;background-color: white;@include border-radius(100%);}
+
+/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+
+progress[value]::-moz-progress-bar {
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,transparent,transparent 33%,rgba(0,0,0,.1) 33%,rgba(0,0,0,.1) 66%,transparent 66%),
+    -moz-linear-gradient( top,rgba(255, 255, 255, .25),rgba(0,0,0,.2)),
+    -moz-linear-gradient( left, #09c, #f44);
+	background-size: 35px 20px, 100% 100%, 100% 100%;@include border-radius(3px);
+}
+
+/* Fallback technique styles */
+.progress-bar {background-color: whiteSmoke;	@include border-radius(3px);@include box-shadow(0 2px 3px rgba(0,0,0,.5) inset);width: 100%; height:20px;}
+.progress-bar span {background-color: royalblue;border-radius: 3px;display: block;text-indent: -9999px;}
+p[data-value] { position: relative; }
+/* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
+p[data-value]:after {content: attr(data-value) '%';position: absolute; right:0;}
+
+
+.jquery::-webkit-progress-value
+{
+	/* Gradient background with Stripes */
+	background-image:
+	-webkit-linear-gradient( 135deg,  transparent,  transparent 33%,  rgba(0,0,0,.1) 33%,  rgba(0,0,0,.1) 66%, transparent 66%),
+    -webkit-linear-gradient( top, rgba(255, 255, 255, .25), rgba(0,0,0,.2)),
+    -webkit-linear-gradient( left, #09c, #690);
+}
+
+
+.jquery::-moz-progress-bar{
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg, transparent, transparent 33%,  rgba(0,0,0,.1) 33%,  rgba(0,0,0,.1) 66%, transparent 66%),
+    -moz-linear-gradient( top, rgba(255, 255, 255, .25), rgba(0,0,0,.2)),
+    -moz-linear-gradient( left, #09c, #690);
+}
+
+
+
+
+
+

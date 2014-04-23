@@ -1,0 +1,359 @@
+/* Body - fonts
+----------------------------------------------- */
+/* Global
+----------------------------------------------- */
+/* Font Specific Settings
+----------------------------------------------- */
+/* Form Settings 
+----------------------------------------------- */
+/* Tables
+----------------------------------------------- */
+/* Button settings
+----------------------------------------------- */
+/* Site colour variables
+----------------------------------------------- */
+/* Settings for SassyGrids 
+----------------------------------------------------------------------------------------------------*/
+.inner {
+  width: 960px;
+}
+.inner .form-control {
+  height: 28px;
+  width: 150px;
+}
+.inner #jobsNavigation, .inner #nodesNavigation, .inner #nodeGroupsNavigation {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.inner #jobsNavigation button, .inner #jobsNavigation input, .inner #jobsNavigation p, .inner #jobsNavigation select, .inner #nodesNavigation button, .inner #nodesNavigation input, .inner #nodesNavigation p, .inner #nodesNavigation select, .inner #nodeGroupsNavigation button, .inner #nodeGroupsNavigation input, .inner #nodeGroupsNavigation p, .inner #nodeGroupsNavigation select {
+  float: left;
+  margin: 0 5px;
+}
+.inner #jobsNavigation input#jobSearch, .inner #nodesNavigation input#jobSearch, .inner #nodeGroupsNavigation input#jobSearch {
+  width: 130px;
+}
+.inner #jobsNavigation input#refreshRate, .inner #nodesNavigation input#refreshRate, .inner #nodeGroupsNavigation input#refreshRate {
+  width: 50px;
+}
+.inner #jobsNavigation select#filterBy, .inner #nodesNavigation select#filterBy, .inner #nodeGroupsNavigation select#filterBy {
+  width: 100px;
+}
+.inner #jobsNavigation p, .inner #nodesNavigation p, .inner #nodeGroupsNavigation p {
+  line-height: 30px;
+}
+.inner td.Ready, .inner td.rendering {
+  color: green;
+}
+.inner td.Dead, .inner td.failed {
+  color: red;
+}
+.inner td.starting, .inner td.waiting {
+  color: orange;
+}
+
+/* tables */
+table.tablesorter thead tr .header {
+  background-image: url("../../images/bg.gif");
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+
+table.tablesorter thead tr .headerSortUp {
+  background-image: url("../../images/asc.gif");
+}
+
+table.tablesorter thead tr .headerSortDown {
+  background-image: url("../../images/desc.gif");
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+  background-color: grey;
+  color: #111;
+}
+
+.ui-dialog.ui-widget.ui-widget-content {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  background: #272b30;
+}
+.ui-dialog.ui-widget.ui-widget-content .ui-dialog-titlebar.ui-widget-header, .ui-dialog.ui-widget.ui-widget-content .ui-dialog-buttonpane {
+  background: #22262a;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+#jobTable {
+  /* Styling an indeterminate progress bar */
+}
+#jobTable .progress {
+  position: relative;
+  display: block;
+  margin-bottom: 0;
+  background: transparent;
+}
+#jobTable tr {
+  position: relative;
+}
+#jobTable tr.completed, #jobTable tr.starting, #jobTable tr.rendering {
+  color: green;
+}
+#jobTable tr.completed td:last-child, #jobTable tr.starting td:last-child, #jobTable tr.rendering td:last-child {
+  position: relative;
+}
+#jobTable tr.completed td:last-child:after, #jobTable tr.starting td:last-child:after, #jobTable tr.rendering td:last-child:after {
+  content: attr(data-total-time);
+  color: white;
+  background: green;
+  padding: 7px;
+  position: absolute;
+  left: 101%;
+  top: 1px;
+  white-space: nowrap;
+}
+#jobTable tr.completed td:last-child:before, #jobTable tr.starting td:last-child:before, #jobTable tr.rendering td:last-child:before {
+  content: '';
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-right: -8px;
+  margin-top: -4px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid green;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+#jobTable tr.rendering {
+  color: orange;
+}
+#jobTable tr.rendering td:last-child:after {
+  background: orange;
+  color: black;
+}
+#jobTable tr.rendering td:last-child:before {
+  border-top-color: orange;
+}
+#jobTable tr.starting, #jobTable tr.dead {
+  color: red;
+}
+#jobTable tr.starting td:last-child:after, #jobTable tr.dead td:last-child:after {
+  background: red;
+  color: white;
+}
+#jobTable tr.starting td:last-child:before, #jobTable tr.dead td:last-child:before {
+  border-top-color: red;
+}
+
+progress:not(value) {
+  /* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
+}
+
+.progressText {
+  display: block;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  z-index: 10;
+  background: transparent;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+
+/* Styling the determinate progress element */
+progress[value] {
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: 20px;
+  background-color: whiteSmoke;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -ms-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -o-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  color: royalblue;
+  position: relative;
+  margin: 0;
+}
+
+/*
+Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+-webkit-progress-bar -> To style the progress element container
+-webkit-progress-value -> To style the progress element value.
+*/
+progress[value]::-webkit-progress-bar {
+  background-color: whiteSmoke;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -ms-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -o-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  position: relative;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-animation: animate-stripes 5s linear infinite;
+  -moz-animation: animate-stripes 5s linear infinite;
+  animation: animate-stripes 5s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  100% {
+    background-position: -100px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  100% {
+    background-position: -100px 0;
+  }
+}
+
+@-o-keyframes animate-stripes {
+  100% {
+    background-position: -100px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  100% {
+    background-position: -100px 0;
+  }
+}
+
+/* Let's spice up things little bit by using pseudo elements. */
+progress[value]::-webkit-progress-value:after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: 7px;
+  right: 7px;
+  background-color: white;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+progress[value]::-moz-progress-bar {
+  /* Gradient background with Stripes */
+  background-image: -moz-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%), -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)), -moz-linear-gradient(left, #0099cc, #ff4444);
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/* Fallback technique styles */
+.progress-bar {
+  background-color: whiteSmoke;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -ms-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  -o-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  width: 100%;
+  height: 20px;
+}
+
+.progress-bar span {
+  background-color: royalblue;
+  border-radius: 3px;
+  display: block;
+  text-indent: -9999px;
+}
+
+p[data-value] {
+  position: relative;
+}
+
+/* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
+p[data-value]:after {
+  content: attr(data-value) "%";
+  position: absolute;
+  right: 0;
+}
+
+.jquery::-webkit-progress-value {
+  /* Gradient background with Stripes */
+  background-image: -webkit-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)), -webkit-linear-gradient(left, #0099cc, #669900);
+}
+
+.jquery::-moz-progress-bar {
+  /* Gradient background with Stripes */
+  background-image: -moz-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%), -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)), -moz-linear-gradient(left, #0099cc, #669900);
+}

@@ -136,17 +136,20 @@ function missingFramesWindow() {
 
         var currentJob = jobRow.attr("data-job-name");
         var currentPath = jobRow.attr("title").replace("Render Directory: ", '');
+        var renderLayer = jobRow.attr('data-render-layer');
         if (currentJob != "N/A" || currentPath != "N/A") {
 
             if (!isKeyInArray(differentJobs, currentJob, currentPath)) {
                 differentJobs.push({
                     'job': currentJob,
-                    'path': currentPath
+                    'path': currentPath,
+                    'renderLayer': renderLayer
                 });
             }
         }
 
     }
+
 
 
     var out = '<table class="table table-striped table-bordered table-hover verticalMargin tablesorter" id="missingFramesTable"><thead><tr><th>Job</th><th>Frames</th></tr></thead><tbody>';
@@ -201,41 +204,30 @@ var frames = [];
 
 
 function checkMissingFrames(job, imageDirectory) {
-
     var fileNames = [];
     var tempFiles = [];
     var fileString = '';
     var missingFiles = '';
+
     $.ajax({
         type: "GET",
         url: '?action=checkMissingFrames&job=' + job + '&dir=' + imageDirectory,
         async: false,
         success: function(data) {
             var obj = eval('(' + data + ')');
-            console.log(obj);
+
             if (obj.status == 'success') {
-
-
-
                 fileNames = obj['filenames'];
                 tempFiles = obj['temporaryFiles'];
-
-
                 fileString = formatFileArrayString(fileNames, 'missing');
                 missingFiles = formatFileArrayString(tempFiles, 'dead');
-                //console.log(missingFiles);
             } else if (obj.status == 'error') {
                 fileString = obj.message + ' : ';
                 missingFiles = obj.directory;
             }
-
         }
-
     });
-
     return fileString + missingFiles;
-
-
 }
 
 function sortNumber(a, b) {
@@ -467,11 +459,16 @@ function readStatus() {
                     nodeStatus = 'completed';
                 }
 
+                var renderLayer = (typeof(obj.renderLayer) != 'undefined' ? (obj.renderLayer == "true" || obj.renderLayer == "" ? '' : obj.renderLayer) : '');
+                console.log(renderLayer);
 
-                out += '<tr title="Render Directory: ' + imagePath + '"  class="' + status + ' ' + nodeStatus + '" data-base-ip="' + baseIP + '" data-job-name="' + name + '">';
+                var renderDirectoryRenderLayer = (renderLayer != '' ? (renderLayer + '/') : '');
+
+
+                out += '<tr data-render-layer="' + renderLayer + '" title="Render Directory: ' + imagePath + renderDirectoryRenderLayer + '"  class="' + status + ' ' + nodeStatus + '" data-base-ip="' + baseIP + '" data-job-name="' + (renderLayer != '' ? renderLayer + '_' : '') + name + '">';
                 //out += '<td>' + contents.scenePath + '</td>';
                 out += '<td><input type="checkbox" id="checkbox_' + baseIP + '" /></td>';
-                out += '<td>' + name + '</td>';
+                out += '<td>' + renderLayer + '_' + name + '</td>';
                 out += '<td>' + baseIP + ' <small class="text-primary">(' + nodeName + ')</small></td>';
                 //out += '<td>' + status + '</td>';
                 out += '<td>';

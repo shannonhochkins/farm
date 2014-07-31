@@ -441,7 +441,7 @@ input {
  */
 
 button,
-html input[type="button class="btn btn-default"],
+html input[type="button"] [class="btn btn-default"],
 input[type="reset"],
 input[type="submit"] {
     //-webkit-appearance: button; /* 2 */
